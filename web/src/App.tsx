@@ -619,7 +619,7 @@ export default function App() {
                 <PluginSlot name="header-left" />
 
                 <Typography className="font-bold text-[1.125rem] leading-[0.95] tracking-[0.0525rem] text-midground uppercase">
-                  Hermes
+                  Wijaya-Agent
                   <br />
                   Agent
                 </Typography>
@@ -1097,7 +1097,7 @@ function SidebarSystemActions({
         sharedGateway
           ? sharedGatewayRestartDescription(sharedGateway)
           : (t.status.restartGatewayConfirmMessage ??
-            "This restarts the Hermes gateway process. Connected channels and active sessions will reconnect afterward.")
+            "This restarts the Wijaya-Agent gateway process. Connected channels and active sessions will reconnect afterward.")
       }
       loading={pendingAction === "restart"}
       onCancel={() => setRestartConfirmOpen(false)}

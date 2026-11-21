@@ -931,11 +931,29 @@ def _build_compact_banner() -> str:
     title_color = _color("banner_title", "#FFBF00")
     dim_color = _color("banner_dim", "#B8860B")
 
-    if (getattr(_skin, "name", "default") if _skin else "default") == "default":
-        tiny_line = "☤ NOUS HERMES"
-    else:
-        tiny_line = _skin.get_branding("agent_name", "Hermes Agent") if _skin else "Hermes Agent"
-    line1 = t("cli.render.banner_tagline", name=tiny_line)
+    # Kali Linux ASCII logo from fastfetch
+    kali_logo = [
+        "            ..,;:ccc,.",
+        "          ......''';lxO.",
+        ".....''''..........,:ld;",
+        "           .';;;:::;,,.x,",
+        "      ..'''.            0Xxoc:,.  ...",
+        "  ....                ,ONkc;,;cokOdc',.",
+        " .                   OMo           ':$2dd$1o.",
+        "                    dMc               :OO;",
+        "                    0M.                 .:o.",
+        "                    ;Wd",
+        "                     ;XO,",
+        "                       ,d0Odlc;,..",
+        "                           ..',;:cdOOd::,.",
+        "                                    .:d;.':;.",
+        "                                       'd,  .'",
+        "                                         ;l   ..",
+        "                                          .o",
+        "                                            c",
+        "                                            .'",
+        "                                             .",
+    ]
 
     if os.environ.get("HERMES_FAST_STARTUP_BANNER") == "1":
         from hermes_cli import __release_date__ as _release_date
@@ -947,21 +965,32 @@ def _build_compact_banner() -> str:
 
     w = min(shutil.get_terminal_size().columns - 2, 88)
     if w < 30:
-        return f"\n[{title_color}]{tiny_line}[/] [dim {dim_color}]- Nous Research[/]\n"
+        return f"\n[{title_color}]Kali Linux[/] [dim {dim_color}]- Nous Research[/]\n"
 
     inner = w - 2  # inside the box border
     bar = "═" * w
     content_width = inner - 2
 
-    line1 = line1[:content_width].ljust(content_width)
-    line2 = version_line[:content_width].ljust(content_width)
+    # Build logo lines, centered/truncated to content_width
+    logo_lines = []
+    for line in kali_logo:
+        if len(line) > content_width:
+            logo_lines.append(line[:content_width])
+        else:
+            logo_lines.append(line.center(content_width))
 
-    return (
-        f"\n[bold {border_color}]╔{bar}╗[/]\n"
-        f"[bold {border_color}]║[/] [{title_color}]{line1}[/] [bold {border_color}]║[/]\n"
-        f"[bold {border_color}]║[/] [dim {dim_color}]{line2}[/] [bold {border_color}]║[/]\n"
-        f"[bold {border_color}]╚{bar}╝[/]\n"
-    )
+    version_line = version_line[:content_width].ljust(content_width)
+
+    # Build the box with logo lines + version line
+    lines = [
+        f"\n[bold {border_color}]╔{bar}╗[/]",
+    ]
+    for logo_line in logo_lines:
+        lines.append(f"[bold {border_color}]║[/] [dim {dim_color}]{logo_line}[/] [bold {border_color}]║[/]")
+    lines.append(f"[bold {border_color}]║[/] [dim {dim_color}]{version_line}[/] [bold {border_color}]║[/]")
+    lines.append(f"[bold {border_color}]╚{bar}╝[/]\n")
+
+    return "\n".join(lines)
 
 
 def _panel_box_width(title: str, content_lines: list[str], min_width: int = 46, max_width: int = 76) -> int:

@@ -67,8 +67,8 @@ export function webPresetFromShared(
 
 export const defaultTheme: DashboardTheme = {
   name: "default",
-  label: "Hermes Teal",
-  description: "Classic dark teal — the canonical Hermes look",
+  label: "Wijaya-Agent Teal",
+  description: "Classic dark teal — the canonical Wijaya-Agent look",
   palette: {
     background: { hex: "#041c1c", alpha: 1 },
     midground: { hex: "#ffe6cb", alpha: 1 },
@@ -175,6 +175,99 @@ export const cyberpunkTheme: DashboardTheme = {
   },
 };
 
+export const ixwijayaTheme: DashboardTheme = {
+  name: "ixwijaya",
+  label: "IXWIJAYA",
+  description: "Cyberpunk purple/green gradient — futuristic AI command center",
+  palette: {
+    ...webPresetFromShared(THEME_PRESET_PALETTES.ixwijaya),
+    noiseOpacity: 1.5,
+  },
+  typography: {
+    ...DEFAULT_TYPOGRAPHY,
+    fontSans: `"Orbitron", "JetBrains Mono", ${SYSTEM_SANS}`,
+    fontMono: `"JetBrains Mono", ${SYSTEM_MONO}`,
+    fontUrl:
+      "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap",
+    letterSpacing: "0.02em",
+  },
+  layout: {
+    ...DEFAULT_LAYOUT,
+    radius: "0",
+    density: "comfortable",
+  },
+  layoutVariant: "cockpit",
+  colorOverrides: {
+    success: "#4ADE80",
+    warning: "#FBBF24",
+    destructive: "#F87171",
+    primary: "#A855F7",
+    secondary: "#06B6D4",
+    accent: "#22C55E",
+    ring: "#A855F7",
+  },
+  seriesColors: {
+    inputTokenAccent: "#A855F7",
+    outputTokenAccent: "#22C55E",
+  },
+  swatchColors: ["#0F0F1A", "#A855F7", "#06B6D4"],
+  terminalBackground: "#0F0F1A",
+  terminalForeground: "#F0FDF4",
+  customCSS: `
+    :root {
+      --gradient-primary: linear-gradient(135deg, #A855F7 0%, #06B6D4 50%, #22C55E 100%);
+      --gradient-purple: linear-gradient(135deg, #A855F7 0%, #C084FC 100%);
+      --gradient-cyan: linear-gradient(135deg, #06B6D4 0%, #22D3EE 100%);
+      --gradient-green: linear-gradient(135deg, #22C55E 0%, #4ADE80 100%);
+      --glow-purple: 0 0 20px rgba(168, 85, 247, 0.4), 0 0 40px rgba(168, 85, 247, 0.2);
+      --glow-cyan: 0 0 20px rgba(6, 182, 212, 0.4), 0 0 40px rgba(6, 182, 212, 0.2);
+      --glow-green: 0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(34, 197, 94, 0.2);
+    }
+    .theme-ixwijaya .card,
+    .theme-ixwijaya .sidebar,
+    .theme-ixwijaya header {
+      background: linear-gradient(145deg, #1E1B2E 0%, #2D1B4E 100%);
+      border-color: #4C1D95;
+      box-shadow: var(--glow-purple);
+    }
+    .theme-ixwijaya button:focus-visible,
+    .theme-ixwijaya input:focus-visible,
+    .theme-ixwijaya select:focus-visible,
+    .theme-ixwijaya textarea:focus-visible {
+      box-shadow: var(--glow-cyan);
+      border-color: #06B6D4;
+    }
+    .theme-ixwijaya .btn-primary {
+      background: var(--gradient-primary);
+      color: #0F0F1A;
+      border: none;
+    }
+    .theme-ixwijaya .btn-primary:hover {
+      filter: brightness(1.1);
+      box-shadow: var(--glow-purple);
+    }
+    .theme-ixwijaya .agent-status-active {
+      background: var(--gradient-green);
+      box-shadow: var(--glow-green);
+    }
+    .theme-ixwijaya .streaming-cursor {
+      animation: ixwijaya-pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes ixwijaya-pulse {
+      0%, 100% { box-shadow: var(--glow-purple); }
+      50% { box-shadow: var(--glow-cyan); }
+    }
+    .theme-ixwijaya ::selection {
+      background: rgba(168, 85, 247, 0.3);
+      color: #F0FDF4;
+    }
+    .theme-ixwijaya ::-webkit-scrollbar-thumb {
+      background: var(--gradient-primary);
+      border-radius: 4px;
+    }
+  `,
+};
+
 export const roseTheme: DashboardTheme = {
   name: "rose",
   label: "Rosé",
@@ -229,8 +322,8 @@ export const nousBlueTheme: DashboardTheme = {
  */
 export const defaultLargeTheme: DashboardTheme = {
   name: "default-large",
-  label: "Hermes Teal (Large)",
-  description: "Hermes Teal with bigger fonts and roomier spacing",
+  label: "Wijaya-Agent Teal (Large)",
+  description: "Wijaya-Agent Teal with bigger fonts and roomier spacing",
   palette: defaultTheme.palette,
   typography: {
     ...DEFAULT_TYPOGRAPHY,
@@ -251,5 +344,6 @@ export const BUILTIN_THEMES: Record<string, DashboardTheme> = {
   ember: emberTheme,
   mono: monoTheme,
   cyberpunk: cyberpunkTheme,
+  ixwijaya: ixwijayaTheme,
   rose: roseTheme,
 };

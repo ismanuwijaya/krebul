@@ -336,6 +336,7 @@ _BUILTIN_DASHBOARD_THEMES = [
     {"name": "ember",     "label": "Ember",          "description": "Warm crimson and bronze — forge vibes"},
     {"name": "mono",      "label": "Mono",           "description": "Clean grayscale — minimal and focused"},
     {"name": "cyberpunk", "label": "Cyberpunk",      "description": "Neon green on black — matrix terminal"},
+    {"name": "ixwijaya",  "label": "IXWIJAYA",       "description": "Cyberpunk purple/green gradient — futuristic AI command center"},
     {"name": "rose",      "label": "Rosé",           "description": "Soft pink and warm ivory — easy on the eyes"},
 ]
 

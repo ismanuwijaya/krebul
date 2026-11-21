@@ -109,20 +109,20 @@ _BUILTIN_SKINS: dict[str, dict[str, Any]] = {
             "completion_menu_current_bg": "#5C221D", "selection_bg": "#692620",
             "shell_dollar": "#DD4A3A", "voice_status_bg": "#2A1212"},
         "spinner": {
-            "waiting_faces": ["(⚔)", "(⛨)", "(▲)", "(<>)", "(/)"],
-            "thinking_faces": ["(⚔)", "(⛨)", "(▲)", "(⌁)", "(<>)"],
-            "thinking_verbs": [
-                "forging", "marching", "sizing the field", "holding the line",
-                "hammering plans", "tempering steel", "plotting impact", "raising the shield"],
-            "wings": _wings("⚔", "▲", ("╸", "╺"), "⛨")},
-        "branding": _branding("Ares", "⚔", "Farewell, warrior! ⚔"),
+                    "waiting_faces": ["(⚔)", "(⛨)", "(▲)", "(<>)" "(/)"],
+                    "thinking_faces": ["(⚔)", "(⛨)", "(▲)", "(⌁)", "(<>)"],
+                    "thinking_verbs": [
+                        "forging", "marching", "sizing the field", "holding the line",
+                        "hammering plans", "tempering steel", "plotting impact", "raising the shield"],
+                    "wings": _wings("⚔", "▲", ("╸", "╺"), "⛨")},
+                "branding": _branding("Ares", "⚔", "Farewell, warrior! ⚔"),
         "tool_prefix": "╎",
         "banner_logo": """[bold #A3261F] █████╗ ██████╗ ███████╗███████╗       █████╗  ██████╗ ███████╗███╗   ██╗████████╗[/]
 [bold #B73122]██╔══██╗██╔══██╗██╔════╝██╔════╝      ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝[/]
 [#C93C24]███████║██████╔╝█████╗  ███████╗█████╗███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
 [#D84A28]██╔══██║██╔══██╗██╔══╝  ╚════██║╚════╝██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
 [#E15A2D]██║  ██║██║  ██║███████╗███████║      ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
-[#EB6C32]╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]""",
+[#EB6C32]╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝""",
         "banner_hero": """[#9F1C1C]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [#9F1C1C]⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⠻⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [#C7A96B]⠀⠀⠀⠀⠀⠀⠀⣠⣾⡿⠋⠀⠀⠀⠙⢿⣷⣄⠀⠀⠀⠀⠀⠀⠀[/]
@@ -235,9 +235,9 @@ _BUILTIN_SKINS: dict[str, dict[str, Any]] = {
 [#75C1F6]██████╔╝██║   ██║███████╗█████╗  ██║██║  ██║██║   ██║██╔██╗ ██║█████╗███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
 [#4FA2E0]██╔═══╝ ██║   ██║╚════██║██╔══╝  ██║██║  ██║██║   ██║██║╚██╗██║╚════╝██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
 [#2E7CC7]██║     ╚██████╔╝███████║███████╗██║██████╔╝╚██████╔╝██║ ╚████║      ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
-[#1B4F95]╚═╝      ╚═════╝ ╚══════╝╚══════╝╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═══╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]""",
+[#1B4F95]╚═╝      ╚═════╝ ╚══════╝╚══════╝╚═╝╚═════╝  ╚═════╝ ╚═╝  ╚═══╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝""",
         "banner_hero": """[#2A6FB9]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
-[#5DB8F5]⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
+[#5DB8F5]⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [#5DB8F5]⠀⠀⠀⠀⠀⠀⠀⢠⣿⠏⠀Ψ⠀⠹⣿⡄⠀⠀⠀⠀⠀⠀⠀[/]
 [#A9DFFF]⠀⠀⠀⠀⠀⠀⠀⣿⡟⠀⠀⠀⠀⠀⢻⣿⠀⠀⠀⠀⠀⠀⠀[/]
 [#A9DFFF]⠀⠀⠀≈≈≈≈≈⣿⡇⠀⠀⠀⠀⠀⢸⣿≈≈≈≈≈⠀⠀⠀[/]
@@ -279,7 +279,7 @@ _BUILTIN_SKINS: dict[str, dict[str, Any]] = {
 [#D7D7D7]███████╗██║███████╗ ╚████╔╝ ██████╔╝███████║██║   ██║███████╗█████╗███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
 [#BFBFBF]╚════██║██║╚════██║  ╚██╔╝  ██╔═══╝ ██╔══██║██║   ██║╚════██║╚════╝██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
 [#8F8F8F]███████║██║███████║   ██║   ██║     ██║  ██║╚██████╔╝███████║      ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
-[#626262]╚══════╝╚═╝╚══════╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚══════╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]""",
+[#626262]╚══════╝╚═╝╚══════╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚══════╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝""",
         "banner_hero": """[#B7B7B7]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [#D3D3D3]⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [#E7E7E7]⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀[/]
@@ -311,7 +311,7 @@ _BUILTIN_SKINS: dict[str, dict[str, Any]] = {
             "completion_menu_meta_current_bg": "#5A260D", "selection_bg": "#5A260D",
             "shell_dollar": "#F29C38", "voice_status_bg": "#2B160E"},
         "spinner": {
-            "waiting_faces": ["(✦)", "(▲)", "(◇)", "(<>)", "(🔥)"],
+            "waiting_faces": ["(✦)", "(▲)", "(◇)", "(<>)" "(🔥)"],
             "thinking_faces": ["(✦)", "(▲)", "(◇)", "(⌁)", "(🔥)"],
             "thinking_verbs": [
                 "banking into the draft", "measuring burn", "reading the updraft",
@@ -325,7 +325,7 @@ _BUILTIN_SKINS: dict[str, dict[str, Any]] = {
 [#F29C38]██║     ███████║███████║██████╔╝██║  ███╔╝ ███████║██████╔╝██║  ██║█████╗███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
 [#E2832B]██║     ██╔══██║██╔══██║██╔══██╗██║ ███╔╝  ██╔══██║██╔══██╗██║  ██║╚════╝██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
 [#C75B1D]╚██████╗██║  ██║██║  ██║██║  ██║██║███████╗██║  ██║██║  ██║██████╔╝      ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
-[#7A3511] ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝       ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]""",
+[#7A3511] ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝       ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝""",
         "banner_hero": """[#FFD39A]⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠶⠶⠶⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [#F29C38]⠀⠀⠀⠀⠀⠀⣴⠟⠁⠀⠀⠀⠀⠈⠻⣦⠀⠀⠀⠀⠀⠀[/]
 [#F29C38]⠀⠀⠀⠀⠀⣼⠏⠀⠀⠀✦⠀⠀⠀⠀⠹⣧⠀⠀⠀⠀⠀[/]
@@ -339,7 +339,75 @@ _BUILTIN_SKINS: dict[str, dict[str, Any]] = {
 [#F29C38]⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⢿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [#F29C38]⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⢻⣧⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [dim #7A3511]⠀⠀⠀⠀⠀⠀⠀tail flame lit⠀⠀⠀⠀⠀⠀⠀⠀[/]""",
-    }}
+    },
+    "ixwijaya": {
+        "name": "ixwijaya",
+        "description": "IXWIJAYA Futuristic AI Command Center — purple & green cyberpunk gradients",
+        "colors": {
+            "banner_border": "#7C3AED", "banner_title": "#A855F7", "banner_accent": "#06B6D4",
+            "banner_dim": "#8B5CF6", "banner_text": "#F0FDF4", "ui_accent": "#06B6D4",
+            "ui_label": "#A855F7", "ui_ok": "#22C55E", "ui_error": "#EF4444", "ui_warn": "#FBBF24",
+            "prompt": "#D1FAE5", "input_rule": "#7C3AED", "response_border": "#06B6D4",
+            "status_bar_bg": "#0F0F1A", "status_bar_text": "#E2E8F0",
+            "status_bar_strong": "#A855F7", "status_bar_dim": "#5B21B6",
+            "status_bar_good": "#22C55E", "status_bar_warn": "#06B6D4", "status_bar_bad": "#FBBF24",
+            "status_bar_critical": "#EF4444", "session_label": "#A855F7",
+            "session_border": "#4C1D95", "completion_menu_bg": "#0F0F1A",
+            "completion_menu_current_bg": "#1E1B2E", "selection_bg": "#2D1B4E",
+            "shell_dollar": "#06B6D4", "voice_status_bg": "#0F0F1A",
+        },
+        "light_colors": {
+            "banner_border": "#6D28D9", "banner_title": "#7C3AED", "banner_accent": "#0891B2",
+            "banner_dim": "#7C3AED", "banner_text": "#0F172A", "ui_accent": "#0891B2",
+            "ui_label": "#6D28D9", "ui_ok": "#16A34A", "ui_error": "#DC2626", "ui_warn": "#CA8A04",
+            "prompt": "#0F172A", "input_rule": "#6D28D9", "response_border": "#0891B2",
+            "status_bar_bg": "#F8FAFC", "status_bar_text": "#1E293B",
+            "status_bar_strong": "#7C3AED", "status_bar_dim": "#8B5CF6",
+            "status_bar_good": "#16A34A", "status_bar_warn": "#0891B2", "status_bar_bad": "#CA8A04",
+            "status_bar_critical": "#DC2626", "session_label": "#7C3AED",
+            "completion_menu_bg": "#F8FAFC", "completion_menu_current_bg": "#EDE9FE",
+            "selection_bg": "#DBEAFE", "shell_dollar": "#0891B2", "voice_status_bg": "#F8FAFC",
+        },
+        "spinner": {
+            "waiting_faces": ["(⚡)", "(◆)", "(◇)", "(⟐)", "(▲)"],
+            "thinking_faces": ["(⚡)", "(◆)", "(◇)", "(⟐)", "(▲)"],
+            "thinking_verbs": [
+                "initializing neural pathways", "compiling quantum circuits", "syncing agent mesh",
+                "calibrating cybernetic core", "optimizing vector matrices", "routing data streams",
+                "executing parallel tasks", "finalizing synthesis"],
+            "wings": _wings("⚡", "◆", "◇", "⟐")},
+        "branding": _branding("IXWIJAYA", "⚡", "Neural link severed. ⚡", prompt="⟐"),
+        "tool_prefix": "▸",
+        "banner_logo": """[bold gradient(#A855F7,#06B6D4)]██╗    ██╗██╗     ██╗ █████╗ ██╗   ██╗ █████╗        █████╗  ██████╗ ███████╗███╗   ██╗████████╗[/]
+[bold gradient(#9333EA,#22D3EE)]██║    ██║██║     ██║██╔══██╗╚██╗ ██╔╝██╔══██╗      ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝[/]
+[gradient(#7C3AED,#06B6D4)]██║ █╗ ██║██║     ██║███████║ ╚████╔╝ ███████║█████╗███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
+[gradient(#8B5CF6,#22D3EE)]██║███╗██║██║██   ██║██╔══██║  ╚██╔╝  ██╔══██║╚════╝██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
+[gradient(#A855F7,#06B6D4)]╚███╔███╔╝██║╚█████╔╝██║  ██║   ██║   ██║  ██║      ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
+[gradient(#5B21B6,#0891B2)] ╚══╝╚══╝ ╚═╝ ╚════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]""",
+        "banner_hero": """[#7C3AED]..............[/]
+[#8B5CF6]            ..,;:ccc,.[/]
+[#A855F7]          ......''';lxO.[/]
+[#A855F7].....''''..........,:ld;[/]
+[#06B6D4]           .';;;:::;,,.x,[/]
+[#06B6D4]      ..'''.            0Xxoc:,.  ...[/]
+[#22C55E]  ....                ,ONkc;,;cokOdc',.[/]
+[#22C55E] .                   OMo           ':ddo.[/]
+[#0891B2]                    dMc               :OO;[/]
+[#0891B2]                    0M.                 .:o.[/]
+[#4C1D95]                    ;Wd[/]
+[#4C1D95]                     ;XO,[/]
+[#06B6D4]                       ,d0Odlc;,..[/]
+[#06B6D4]                           ..',;:cdOOd::,.[/]
+[#8B5CF6]                                    .:d;.':;.[/]
+[#8B5CF6]                                       'd,  .'[/]
+[#A855F7]                                         ;l   ..[/]
+[#A855F7]                                          .o[/]
+[#7C3AED]                                            c[/]
+[#7C3AED]                                            .'[/]
+[#7C3AED]                                             .[/]
+[dim #4C1D95]⠀⠀⠀⠀⠀⠀Wijaya-Agent⠀⠀⠀⠀⠀⠀[/]""",
+    }
+}
 
 _active_skin: Optional[SkinConfig] = None
 _active_skin_name: str = "default"
@@ -389,12 +457,17 @@ def _build_skin_config(data: dict[str, Any]) -> SkinConfig:
         if isinstance(value, dict):
             return value
         if value is not None:
-            logger.warning("Skin '%s' has invalid '%s' section type (%s); ignoring section",
-                           skin_name, key, type(value).__name__)
+            logger.warning(
+                "Skin '%s' has invalid '%s' section type (%s); ignoring section",
+                skin_name,
+                key,
+                type(value).__name__,
+            )
         return {}
 
     def merged(key: str) -> dict[str, Any]:
         return {**default.get(key, {}), **section(key)}
+
     # Paired palettes are NOT merged over the default skin's blocks: an empty block means
     # "no hand-tuned variant for that polarity" and consumers (the TUI) fall back to `colors`
     # + automatic adaptation, which beats the default's gold light palette under a crimson skin.
@@ -493,7 +566,6 @@ def get_active_help_header(fallback: str = "(^_^)? Available Commands") -> str:
 
 def get_active_goodbye(fallback: str = "Goodbye! ☤") -> str:
     return _active_branding("goodbye", fallback)
-
 
 # Palette resolution order for prompt_toolkit styles: (name, skin color key, fallback). A
 # fallback starting with "@" names an earlier entry (so a missing key inherits its remapped value).

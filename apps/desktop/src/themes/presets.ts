@@ -441,6 +441,20 @@ export const slateTheme: DesktopTheme = {
   }
 }
 
+/** Cyberpunk purple/green gradient. Matches the CLI ixwijaya skin and dashboard theme. */
+export const ixwijayaTheme: DesktopTheme = {
+  name: 'ixwijaya',
+  label: 'IXWIJAYA',
+  description: 'Cyberpunk purple/green gradient — futuristic AI command center',
+  ...THEME_PRESET_PALETTES.ixwijaya,
+  typography: {
+    fontSans: `"Orbitron", "JetBrains Mono", ${SYSTEM_SANS}`,
+    fontMono: `"JetBrains Mono", ${SYSTEM_MONO}`,
+    fontUrl: 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap',
+    letterSpacing: '0.02em'
+  }
+}
+
 export const BUILTIN_THEMES: Record<string, DesktopTheme> = {
   nous: nousTheme,
   github: githubTheme,
@@ -453,7 +467,8 @@ export const BUILTIN_THEMES: Record<string, DesktopTheme> = {
   ember: emberTheme,
   mono: monoTheme,
   slate: slateTheme,
-  cyberpunk: cyberpunkTheme
+  cyberpunk: cyberpunkTheme,
+  ixwijaya: ixwijayaTheme
 }
 
 export const BUILTIN_THEME_LIST = Object.values(BUILTIN_THEMES)
