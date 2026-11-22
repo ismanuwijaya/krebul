@@ -406,6 +406,67 @@ _BUILTIN_SKINS: dict[str, dict[str, Any]] = {
 [#7C3AED]                                            .'[/]
 [#7C3AED]                                             .[/]
 [dim #4C1D95]⠀⠀⠀⠀⠀⠀Wijaya-Agent⠀⠀⠀⠀⠀⠀[/]""",
+    },
+    "cyberpunk": {
+        "name": "cyberpunk",
+        "description": "Cyberpunk — neon-drenched void, electric purple/cyan/green matrix",
+        "colors": {
+            "banner_border": "#00FF88", "banner_title": "#BC13FE", "banner_accent": "#00FFFF",
+            "banner_dim": "#664488", "banner_text": "#E0E0FF", "ui_accent": "#00FFFF",
+            "ui_label": "#BC13FE", "ui_ok": "#00FF88", "ui_error": "#FF0055", "ui_warn": "#FFAA00",
+            "prompt": "#00FFFF", "input_rule": "#00FF88", "response_border": "#BC13FE",
+            "status_bar_bg": "#03030A", "status_bar_text": "#E0E0FF",
+            "status_bar_strong": "#BC13FE", "status_bar_dim": "#664488",
+            "status_bar_good": "#00FF88", "status_bar_warn": "#FFAA00", "status_bar_bad": "#FF0055",
+            "status_bar_critical": "#FF0055", "session_label": "#BC13FE",
+            "session_border": "#664488", "completion_menu_bg": "#0A0A1A",
+            "completion_menu_current_bg": "#1A0033", "selection_bg": "#1A0033",
+            "shell_dollar": "#FF00FF", "voice_status_bg": "#03030A",
+        },
+        "light_colors": {
+            "banner_border": "#00AA66", "banner_title": "#8800CC", "banner_accent": "#0088AA",
+            "banner_dim": "#8866AA", "banner_text": "#1A1A33", "ui_accent": "#0088AA",
+            "ui_label": "#8800CC", "ui_ok": "#008844", "ui_error": "#CC0033", "ui_warn": "#CC8800",
+            "prompt": "#006688", "input_rule": "#00AA66", "response_border": "#8800CC",
+            "status_bar_bg": "#F0F0FF", "status_bar_text": "#1A1A33",
+            "status_bar_strong": "#8800CC", "status_bar_dim": "#8866AA",
+            "status_bar_good": "#008844", "status_bar_warn": "#CC8800", "status_bar_bad": "#CC0033",
+            "status_bar_critical": "#CC0033", "session_label": "#8800CC",
+            "completion_menu_bg": "#FFFFFF", "completion_menu_current_bg": "#E0D0F0",
+            "selection_bg": "#E0D0F0", "shell_dollar": "#AA00AA", "voice_status_bg": "#F0F0FF",
+        },
+        "spinner": {
+            "waiting_faces": ["(⚡)", "(▲)", "(◇)", "(◆)", "(▲)"],
+            "thinking_faces": ["(⚡)", "(▲)", "(◇)", "(⌁)", "(◆)"],
+            "thinking_verbs": [
+                "jacking into the matrix", "decrypting neural pathways", "syncing cybernetic mesh",
+                "compiling zero-day exploits", "routing through proxy chains", "injecting payload",
+                "bypassing ICE walls", "exfiltrating data"],
+            "wings": _wings("⚡", "▲", "◇", "◆")},
+        "branding": _branding("Wijaya-Agent", "⚡", "Disconnecting from the grid... ⚡", prompt="▸"),
+        "tool_prefix": "▸",
+        "banner_logo": """[bold gradient(#BC13FE,#00FFFF)] ██████╗ ██████╗ ███████╗███████╗██╗   ██╗██╗  ██╗██╗   ██╗███████╗       █████╗  ██████╗ ███████╗███╗   ██╗████████╗[/]
+[bold gradient(#A800E6,#00CCDD)]██╔══██╗██╔══██╗██╔════╝██╔════╝██║   ██║╚██╗ ██╔╝██║   ██║██╔════╝      ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝[/]
+[gradient(#9900FF,#00BBEE)]███████║██████╔╝█████╗  ███████╗██║   ██║ ╚████╔╝ ██║   ██║███████╗█████╗███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
+[gradient(#8800FF,#00AADD)]██╔══██║██╔══██╗██╔══╝  ╚════██║██║   ██║  ╚██╔╝  ██║   ██║╚════██║╚════╝██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
+[gradient(#7700FF,#0099CC)]██║  ██║██║  ██║███████╗███████║╚██████╔╝   ╚═══╝   ╚██████╔╝███████║      ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
+[gradient(#6600CC,#0088BB)]╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝     ╚═══╝    ╚═════╝ ╚══════╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]""",
+        "banner_hero": """[#BC13FE]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
+[#A800E6]⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀[/]
+[#9900FF]⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⡿⠋⠉⠉⠉⠙⢿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀[/]
+[#8800FF]⠀⠀⠀⠀⠀⠀⢀⣾⡿⠋⠀⠀⠀⠀⠀⠀⠙⢿⣷⡀⠀⠀⠀⠀⠀⠀⠀[/]
+[#7700FF]⠀⠀⠀⠀⠀⣰⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣆⠀⠀⠀⠀⠀⠀⠀[/]
+[#6600CC]⠀⠀⠀⠀⢰⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⡆⠀⠀⠀⠀⠀⠀[/]
+[#5500BB]⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀[/]
+[#4400AA]⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀[/]
+[#330099]⠀⠀⠀⠀⢿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡿⠀⠀⠀⠀⠀⠀⠀[/]
+[#220088]⠀⠀⠀⠀⠘⢿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⡿⠃⠀⠀⠀⠀⠀⠀⠀[/]
+[#110077]⠀⠀⠀⠀⠀⠈⠻⣿⣷⣦⣤⣤⣤⣤⣶⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀[/]
+[#000066]⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠿⠿⠿⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
+[#00FFFF]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
+[#00FF88]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
+[#FF00FF]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
+[dim #664488]⠀⠀⠀⠀⠀⠀⠀⠀Wijaya-Agent⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]""",
     }
 }
 

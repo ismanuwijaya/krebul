@@ -71,8 +71,7 @@ export interface Theme {
 //
 // Generic color computation lives in @hermes/shared/color (the primitives,
 // shared with the desktop) and lib/color.ts (TUI-only lifts and re-toning);
-// this file keeps only the ANSI-256 remapping that is specific to the
-// limited-palette Apple Terminal path. contrastRatio/ensureContrast are
+// this file keeps only the ANSI-256 remapping that is specific to the limited-palette Apple Terminal path. contrastRatio/ensureContrast are
 // re-exported for existing consumers (tests, /theme-info).
 
 export { contrastRatio, ensureContrast }
@@ -252,7 +251,7 @@ export function themeToneHex(tone: string): string {
 // ── Defaults ─────────────────────────────────────────────────────────
 
 const BRAND: ThemeBrand = {
-  name: 'Hermes Agent',
+  name: 'Wijaya-Agent',
   icon: '☤',
   prompt: '❯',
   welcome: 'Type your message or /help for commands.',
@@ -417,6 +416,53 @@ export const LIGHT_SEEDS: ThemeSeeds = {
   warn: '#956115'
 }
 
+// ── Cyberpunk Seeds ──────────────────────────────────────────────────
+//
+// Neon-drenched cyberpunk aesthetic: deep void background with
+// electric purple, cyan, and green accents. Matrix meets Ghost in the Shell.
+
+export const CYBERPUNK_DARK_SEEDS: ThemeSeeds = {
+  accent: '#00FFFF',           // Electric cyan
+  bg: '#03030A',               // Near-black void
+  border: '#00FF88',           // Neon green border
+  error: '#FF0055',            // Hot pink/red error
+  ok: '#00FF88',               // Neon green success
+  primary: '#BC13FE',          // Electric purple
+  prompt: '#00FFFF',           // Cyan prompt
+  selection: '#1A0033',        // Deep purple selection
+  shellDollar: '#FF00FF',      // Magenta dollar
+  statusBad: '#FFAA00',        // Amber warning
+  statusCritical: '#FF0055',   // Hot pink critical
+  statusGood: '#00FF88',       // Neon green good
+  statusWarn: '#FFAA00',       // Amber warn
+  surface: '#0A0A1A',          // Slightly elevated surface
+  text: '#E0E0FF',             // Pale lavender text
+  warn: '#FFAA00',             // Amber warn
+  activeRow: '#1A0033',        // Purple active row
+  muted: '#664488'             // Muted purple
+}
+
+export const CYBERPUNK_LIGHT_SEEDS: ThemeSeeds = {
+  accent: '#0088AA',           // Muted cyan for light
+  bg: '#F0F0FF',               // Pale lavender background
+  border: '#00AA66',           // Green border
+  error: '#CC0033',            // Dark pink error
+  ok: '#008844',               // Dark green success
+  primary: '#8800CC',          // Purple primary
+  prompt: '#006688',           // Dark cyan prompt
+  selection: '#E0D0F0',        // Light purple selection
+  shellDollar: '#AA00AA',      // Dark magenta
+  statusBad: '#CC8800',        // Dark amber
+  statusCritical: '#CC0033',   // Dark pink critical
+  statusGood: '#008844',       // Dark green good
+  statusWarn: '#CC8800',       // Dark amber warn
+  surface: '#FFFFFF',          // White surface
+  text: '#1A1A33',             // Dark navy text
+  warn: '#CC8800',             // Dark amber
+  activeRow: '#E0D0F0',        // Light purple active row
+  muted: '#8866AA'             // Muted purple
+}
+
 export const DARK_THEME: Theme = {
   color: buildPalette(DARK_SEEDS, false),
   brand: BRAND,
@@ -427,6 +473,38 @@ export const DARK_THEME: Theme = {
 export const LIGHT_THEME: Theme = {
   color: buildPalette(LIGHT_SEEDS, true),
   brand: BRAND,
+  bannerLogo: '',
+  bannerHero: ''
+}
+
+export const CYBERPUNK_DARK_THEME: Theme = {
+  color: buildPalette(CYBERPUNK_DARK_SEEDS, false),
+  brand: {
+    ...BRAND,
+    name: 'Wijaya-Agent',
+    icon: '⚡',
+    prompt: '▸',
+    welcome: 'Welcome to the Neural Net. Type /help for commands.',
+    goodbye: 'Disconnecting from the grid... ⚡',
+    tool: '▸',
+    helpHeader: 'SYSTEM COMMANDS'
+  },
+  bannerLogo: '',
+  bannerHero: ''
+}
+
+export const CYBERPUNK_LIGHT_THEME: Theme = {
+  color: buildPalette(CYBERPUNK_LIGHT_SEEDS, true),
+  brand: {
+    ...BRAND,
+    name: 'Wijaya-Agent',
+    icon: '⚡',
+    prompt: '▸',
+    welcome: 'Welcome to the Neural Net. Type /help for commands.',
+    goodbye: 'Disconnecting from the grid... ⚡',
+    tool: '▸',
+    helpHeader: 'SYSTEM COMMANDS'
+  },
   bannerLogo: '',
   bannerHero: ''
 }
@@ -447,7 +525,7 @@ export const LIGHT_THEME: Theme = {
 //     TUI does not own its canvas — panels sit directly on the terminal's
 //     background — so a wrong-polarity fill (navy menu on a white terminal)
 //     falls back to the base palette even when the skin authored it.
-
+//
 // Display shim — the "rendering gotcha" layer, calibrated against the look
 // the maintainers standardized on (pixel-sampled from the reference
 // screenshot): the beloved cross-polarity rendering is the AUTHORED palette
@@ -555,153 +633,7 @@ function referenceBackground(isLight: boolean, env: NodeJS.ProcessEnv = process.
   return isLight ? '#ffffff' : '#101014'
 }
 
-// ── Derived tone ladder (the desktop color-mix system) ──────────────
-//
-// A theme is a handful of SEEDS (text, primary, accent, border, status hues);
-// every secondary tone — muted text, labels, surfaces, selection chips — is a
-// color-mix derivative of those seeds against the real terminal background,
-// exactly like the desktop's `--theme-*` seeds → `--ui-*` color-mix ladder in
-// apps/desktop/src/styles.css. Skins therefore cannot ship an incoherent
-// "dim": if they don't author a tone, it is DERIVED from their own identity,
-// never inherited from another skin's palette.
-//
-// Mix knobs are the single source of truth for tone hierarchy. (The classic
-// prompt_toolkit CLI still reads the built-in skins' complete authored
-// palettes; those were generated with the same math.)
-
-export interface ThemeTones {
-  /** Secondary/dim text: receded accent (dark) / primary-ink blend (light). */
-  muted: string
-  /** Field labels: one step brighter than muted, same family. */
-  label: string
-  /** Status-bar default text: the gray of slightly-receded text. */
-  statusFg: string
-  /** Raised panel fill: background nudged toward the (softened) accent. */
-  surface: string
-  /** Active list-row chip: surface tinted with accent. */
-  activeRow: string
-  /** Text-selection highlight: bg tinted with the theme's blue (light) or accent (dark). */
-  selection: string
-  /** Border fallback: accent receded toward the background. */
-  border: string
-}
-
-/**
- * The fitted tone ladder. Knobs are REVERSE-ENGINEERED from the original
- * hand-tuned palettes (grid-search over mix/desaturate formula families
- * against the pre-refactor literals + every authored skin palette; see the
- * "reproduces the original hand-tuned tones" test for the contract):
- *
- *   dark muted  #CC9B1F ≈ desaturate(mix(accent, bg, .19), .16)  (err 3)
- *   dark label  #DAA520 ≈ desaturate(mix(accent, bg, .13), .16)  (err 3)
- *   dark status #C0C0C0 = grayOf(mix(text, bg, .24))             (err 0)
- *   light muted #946C08 ≈ desaturate(accent, .05)                (err 2)
- *   light label #8E6B13 ≈ desaturate(mix(accent, text, .03), .15) (err 2)
- *   light status #6F6F6F = grayOf(mix(text, bg, .30))            (err 1)
- *   light surface #F5F5F5 ≈ bg + softened accent                 (err 5)
- *   light chip  #E0D1BF = mix(surface, accent, .25)              (err 8)
- *   light selection #D4E4F7 ≈ mix(bg, shellDollar, .20)          (err 7)
- *
- * The light targets are the LIFT CANON: liftForContrast(dark literal,
- * white, 4.5) — what xterm's minimumContrastRatio showed on light hosts
- * for years — not hand-picked browns (those read as desaturated mud).
- *
- * The classic dark navy fills (#1a1a2e/#333355/#3a3a55) are IRREDUCIBLE from
- * gold seeds — the search bottoms out at gray, err 10–17 — so they remain
- * explicit identity seeds on DARK_SEEDS rather than pretending to be math.
- */
-export function deriveTones(seeds: {
-  accent: string
-  bg: string
-  primary: string
-  shellDollar?: string
-  text: string
-}): ThemeTones {
-  const { accent, bg, text } = seeds
-  const isLight = (relativeLuminance(bg) ?? 0) > 0.5
-  // Fill tint keeps most of the accent's chroma — a heavier desaturate here
-  // read as washed-out ("a little too desat") next to authored fills.
-  const surface = mix(bg, desaturate(accent, 0.15), isLight ? 0.045 : 0.09)
-
-  return {
-    // Light knobs are fitted to the lift canon (xterm minimumContrastRatio
-    // 4.5 of the classic dark golds against white — see LIGHT_SEEDS), not
-    // to ink blends: muted #946C08 ≈ desat(accent .05), label #8E6B13 ≈
-    // desat(mix(accent, text, .03), .15), statusFg #6F6F6F ≈ gray 30% lift.
-    muted: isLight ? desaturate(accent, 0.05) : desaturate(mix(accent, bg, 0.19), 0.16),
-    label: isLight ? desaturate(mix(accent, text, 0.03), 0.15) : desaturate(mix(accent, bg, 0.13), 0.16),
-    statusFg: grayOf(mix(text, bg, isLight ? 0.3 : 0.24)),
-    surface,
-    activeRow: mix(surface, accent, 0.25),
-    selection: isLight && seeds.shellDollar ? mix(bg, seeds.shellDollar, 0.2) : mix(surface, accent, 0.28),
-    border: mix(accent, bg, 0.25)
-  }
-}
-
-const TRUE_RE = /^(?:1|true|yes|on)$/
-const FALSE_RE = /^(?:0|false|no|off)$/
-
-// TERM_PROGRAM fallback allow-list for terminals whose default profile is
-// light and which may not expose COLORFGBG. This currently includes Apple
-// Terminal. Explicit HERMES_TUI_THEME / COLORFGBG signals above still win,
-// so dark Apple Terminal profiles that advertise a dark background stay dark.
-const LIGHT_DEFAULT_TERM_PROGRAMS = new Set<string>(['Apple_Terminal'])
-
-// Best-effort RGB → luminance check.  Currently only accepts a 3- or
-// 6-digit hex value (with or without a leading `#`); the env var name
-// `HERMES_TUI_BACKGROUND` is intentionally generic so a future OSC11
-// query helper can cache its answer there too, but additional formats
-// (rgb()/hsl()/named colours) would need explicit parsing here first.
-const LUMA_LIGHT_THRESHOLD = 0.6
-
-// Strict allow-list: parseInt(..., 16) silently truncates at the first
-// non-hex character (e.g. `fffgff` would parse as `fff` and yield a
-// false-positive "white" reading), so reject anything that doesn't match
-// the canonical 3- or 6-digit shape up front.
-const HEX_3_RE = /^[0-9a-f]{3}$/
-const HEX_6_RE = /^[0-9a-f]{6}$/
-
-function backgroundLuminance(raw: string): null | number {
-  const v = raw.trim().toLowerCase()
-
-  if (!v) {
-    return null
-  }
-
-  const hex = v.startsWith('#') ? v.slice(1) : v
-
-  const rgb = HEX_6_RE.test(hex)
-    ? [parseInt(hex.slice(0, 2), 16), parseInt(hex.slice(2, 4), 16), parseInt(hex.slice(4, 6), 16)]
-    : HEX_3_RE.test(hex)
-      ? [parseInt(hex[0]! + hex[0]!, 16), parseInt(hex[1]! + hex[1]!, 16), parseInt(hex[2]! + hex[2]!, 16)]
-      : null
-
-  if (!rgb) {
-    return null
-  }
-
-  // Rec. 709 luma — close enough for "is this background bright".
-  return (0.2126 * rgb[0]! + 0.7152 * rgb[1]! + 0.0722 * rgb[2]!) / 255
-}
-
-// Pick light vs dark with ordered, explainable signals (#11300):
-//
-//   1. `HERMES_TUI_LIGHT` boolean — `1`/`true`/`yes`/`on` → light;
-//      `0`/`false`/`no`/`off` → dark.  Either explicit value wins
-//      regardless of any later signal.
-//   2. `HERMES_TUI_THEME` named override — `light` / `dark` win over
-//      every signal below.
-//   3. `HERMES_TUI_BACKGROUND` hex hint (3- or 6-digit) — luminance
-//      ≥ LUMA_LIGHT_THRESHOLD → light.
-//   4. `COLORFGBG` last field — XFCE / rxvt / Terminal.app emit
-//      slot 7 or 15 on light profiles; 0–15 ranges are otherwise
-//      treated as authoritatively dark so the TERM_PROGRAM
-//      allow-list below cannot override an explicit dark profile.
-//   5. `TERM_PROGRAM` light-default allow-list.
-//
-// Anything we can't decide stays dark — the default Hermes palette
-// is the dark one.
-export function detectLightMode(
+function detectLightMode(
   env: NodeJS.ProcessEnv = process.env,
   // Injectable so tests can prove the COLORFGBG-over-TERM_PROGRAM
   // precedence rule even though the production allow-list is empty.
@@ -792,6 +724,52 @@ export function normalizeThemeForAnsiLightTerminal(
   return { ...theme, color }
 }
 
+const TRUE_RE = /^(?:1|true|yes|on)$/
+const FALSE_RE = /^(?:0|false|no|off)$/
+
+// TERM_PROGRAM fallback allow-list for terminals whose default profile is
+// light and which may not expose COLORFGBG. This currently includes Apple
+// Terminal. Explicit HERMES_TUI_THEME / COLORFGBG signals above still win,
+// so dark Apple Terminal profiles that advertise a dark background stay dark.
+const LIGHT_DEFAULT_TERM_PROGRAMS = new Set<string>(['Apple_Terminal'])
+
+// Best-effort RGB → luminance check.  Currently only accepts a 3- or
+// 6-digit hex value (with or without a leading `#`); the env var name
+// `HERMES_TUI_BACKGROUND` is intentionally generic so a future OSC11
+// query helper can cache its answer there too, but additional formats
+// (rgb()/hsl()/named colours) would need explicit parsing here first.
+const LUMA_LIGHT_THRESHOLD = 0.6
+
+// Strict allow-list: parseInt(..., 16) silently truncates at the first
+// non-hex character (e.g. `fffgff` would parse as `fff` and yield a
+// false-positive "white" reading), so reject anything that doesn't match
+// the canonical 3- or 6-digit shape up front.
+const HEX_3_RE = /^[0-9a-f]{3}$/
+const HEX_6_RE = /^[0-9a-f]{6}$/
+
+function backgroundLuminance(raw: string): null | number {
+  const v = raw.trim().toLowerCase()
+
+  if (!v) {
+    return null
+  }
+
+  const hex = v.startsWith('#') ? v.slice(1) : v
+
+  const rgb = HEX_6_RE.test(hex)
+    ? [parseInt(hex.slice(0, 2), 16), parseInt(hex.slice(2, 4), 16), parseInt(hex.slice(4, 6), 16)]
+    : HEX_3_RE.test(hex)
+      ? [parseInt(hex[0]! + hex[0]!, 16), parseInt(hex[1]! + hex[1]!, 16), parseInt(hex[2]! + hex[2]!, 16)]
+      : null
+
+  if (!rgb) {
+    return null
+  }
+
+  // Rec. 709 luma — close enough for "is this background bright".
+  return (0.2126 * rgb[0]! + 0.7152 * rgb[1]! + 0.0722 * rgb[2]!) / 255
+}
+
 const DEFAULT_LIGHT_MODE = detectLightMode()
 
 export const DEFAULT_THEME: Theme = normalizeThemeForAnsiLightTerminal(
@@ -811,6 +789,12 @@ export function defaultThemeForCurrentBackground(env: NodeJS.ProcessEnv = proces
   const isLight = detectLightMode(env)
 
   return normalizeThemeForAnsiLightTerminal(isLight ? LIGHT_THEME : DARK_THEME, env, isLight)
+}
+
+export function cyberpunkThemeForCurrentBackground(env: NodeJS.ProcessEnv = process.env): Theme {
+  const isLight = detectLightMode(env)
+
+  return normalizeThemeForAnsiLightTerminal(isLight ? CYBERPUNK_LIGHT_THEME : CYBERPUNK_DARK_THEME, env, isLight)
 }
 
 // ── Skin → Theme ─────────────────────────────────────────────────────
